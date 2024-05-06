@@ -30,7 +30,7 @@ namespace churchV1.Service
         {
             var data = await homeRepo.getContents();
             var map= mapper.Map<IEnumerable<ContentModel>>(data);
-            return map;
+            return map.Where(x=>x.Active==true);
         }
     }
 }

@@ -5,5 +5,7 @@
         public string? Link { get; set; }
         public string? Discription { get; set; }
         public string? Title { get; set; }
+        public bool Active { get;set; }
+
     }
 }
