@@ -2,8 +2,9 @@
 
 namespace churchV1.Interface
 {
-    public interface INavbar
+    public interface IHome
     {
         Task<IEnumerable<NavbarModel>> GetAllNevbar();
+        Task<IEnumerable<ContentModel>> GetContents();
     }
 }

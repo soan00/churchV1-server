@@ -2,6 +2,7 @@
 using churchV1.Models;
 using churchV1.Service;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualBasic;
 
 namespace churchV1.Controllers
 {
@@ -9,9 +10,9 @@ namespace churchV1.Controllers
     
     public class HomeController : Controller
     {
-        private readonly INavbar service;
+        private readonly IHome service;
 
-        public HomeController(INavbar service)
+        public HomeController(IHome service)
         {
             this.service = service;
         }
@@ -20,8 +21,15 @@ namespace churchV1.Controllers
        public async Task<IActionResult> GetAllNavbarItems()
         {
             var items = await service.GetAllNevbar();        
-                return Ok(items);
+                return Ok(items.Select(x => new{Name=x.Name,Access=x.Access,Link=x.RoutLink}));
                 
+        }
+        [Route("[controller]/getContent")]
+        [HttpGet]
+        public async Task<IActionResult> GetContent()
+        {
+            var contents=await service.GetContents();
+            return Ok(contents);
         }
     }
 }

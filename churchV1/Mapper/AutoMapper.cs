@@ -10,6 +10,8 @@ namespace churchV1.Mapper
         {
             CreateMap<NavbarDTO,NavbarModel>();
             CreateMap<NavbarModel,NavbarDTO>();
+            CreateMap<ContentDTO, ContentModel>();
+            CreateMap<ContentModel, ContentDTO>();
         }
     }
 }
