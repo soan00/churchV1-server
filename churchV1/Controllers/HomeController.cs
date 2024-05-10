@@ -21,7 +21,7 @@ namespace churchV1.Controllers
        public async Task<IActionResult> GetAllNavbarItems()
         {
             var items = await service.GetAllNevbar();        
-                return Ok(items.Select(x => new{Name=x.Name,Access=x.Access,Link=x.RoutLink}));
+                return Ok(items.Select(x => new{Name=x.Name.Trim(),Access=x.Access,Link=x.RoutLink.Trim()}));
                 
         }
         [Route("[controller]/getContent")]

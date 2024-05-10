@@ -17,7 +17,7 @@ namespace DataBase.AccessLayer
         {
             using(var connection=db.CreateConnection())
             {
-                var query = "SELECT * FROM public.\"Navbar\"";
+                var query = "SELECT  * FROM dbo.Navbar";
                 var result = await connection.QueryAsync<NavbarDTO>(query);
                 return result.ToList();
             }

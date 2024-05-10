@@ -1,5 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
-using Npgsql;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 using System.Data;
 
 namespace DataBase
@@ -15,7 +15,7 @@ namespace DataBase
         }
         public IDbConnection CreateConnection()
         {
-            return new NpgsqlConnection(connectionString);
+            return new SqlConnection (connectionString);
         }
     }
 }

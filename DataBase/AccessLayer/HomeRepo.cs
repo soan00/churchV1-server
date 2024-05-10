@@ -15,7 +15,7 @@ namespace DataBase.AccessLayer
         }
         public async Task<IEnumerable<ContentDTO>> getContents()
         {
-            var query = "SELECT * FROM public.\"Contents\"";
+            var query = "SELECT * FROM dbo.Contents";
             using(var connection = context.CreateConnection())
             {
                 var data=await connection.QueryAsync<ContentDTO>(query);
