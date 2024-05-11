@@ -13,6 +13,9 @@ namespace churchV1.Mapper
             CreateMap<ContentDTO, ContentModel>();
             CreateMap<ContentModel, ContentDTO>();
             CreateMap<EventModel, EventDTO>();
+            CreateMap<EventDTO, EventModel>();
+            CreateMap<PrayerDTO, PrayerModel>();
+            CreateMap<PrayerModel, PrayerDTO>();
         }
     }
 }

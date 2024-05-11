@@ -46,6 +46,23 @@ namespace churchV1.Controllers
             catch (Exception ex) { return BadRequest(ex.Message); }
 
         }
+        [Route("[controller]/postPrayer")]
+        [HttpPost]
+        public async Task<IActionResult> PostPrayer([FromBody] PrayerModel model)
+        {
+            try
+            {
+                var result=await service.postPrayerRequest(model);
+                if (result == true)
+                    return Ok("Your Prayer Request Submitted");
+                else
+                    return BadRequest("Something went wrong, Please try again");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
     }
 }

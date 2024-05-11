@@ -2,6 +2,7 @@
 using churchV1.Interface;
 using churchV1.Models;
 using DataBase.AccessLayer;
+using DataBase.DTO;
 using Microsoft.VisualBasic;
 
 namespace churchV1.Service
@@ -38,6 +39,13 @@ namespace churchV1.Service
             var events= await homeRepo.getEvents();
             var map=mapper.Map<IEnumerable<EventModel>>(events);
             return map.Where(x => x.Active == true);
+        }
+
+        public async Task<bool> postPrayerRequest(PrayerModel prayer)
+        {
+            var map=mapper.Map<PrayerDTO>(prayer);
+            var result = await homeRepo.postPrayerRequest(map);
+            return result;
         }
     }
 }

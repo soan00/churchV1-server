@@ -2,6 +2,7 @@
 
 using Dapper;
 using DataBase.DTO;
+using System.Data;
 
 namespace DataBase.AccessLayer
 {
@@ -30,6 +31,18 @@ namespace DataBase.AccessLayer
                 var data=await conn.QueryAsync<EventDTO>(query);
                 return data.ToList();
             }
+        }
+        public async Task<bool> postPrayerRequest(PrayerDTO prayer)
+        {
+            using (var connection = context.CreateConnection())
+            {
+                var result = await connection.ExecuteAsync("SP_insert_prayer_request",prayer,commandType:CommandType.StoredProcedure);
+                if(result==-1)
+                return true;
+                else 
+                    return false;
+            }
+            
         }
     }
 }

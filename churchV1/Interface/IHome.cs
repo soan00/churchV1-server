@@ -7,5 +7,6 @@ namespace churchV1.Interface
         Task<IEnumerable<NavbarModel>> GetAllNevbar();
         Task<IEnumerable<ContentModel>> GetContents();
         Task<IEnumerable<EventModel>> GetEvents();
+        Task<bool> postPrayerRequest(PrayerModel prayer);
     }
 }
