@@ -7,7 +7,7 @@ using Microsoft.VisualBasic;
 namespace churchV1.Controllers
 {
     [ApiController]
-    
+
     public class HomeController : Controller
     {
         private readonly IHome service;
@@ -18,18 +18,34 @@ namespace churchV1.Controllers
         }
         [Route("[controller]/getNavItems")]
         [HttpGet]
-       public async Task<IActionResult> GetAllNavbarItems()
+        public async Task<IActionResult> GetAllNavbarItems()
         {
-            var items = await service.GetAllNevbar();        
-                return Ok(items.Select(x => new{Name=x.Name.Trim(),Access=x.Access,Link=x.RoutLink.Trim()}));
-                
+            var items = await service.GetAllNevbar();
+            if (items != null && items.Any())
+                return Ok(items.Select(x => new { Name = x.Name.Trim(), Access = x.Access, Link = x.RoutLink.Trim() }));
+            else
+                return BadRequest("No data found");
+
         }
         [Route("[controller]/getContent")]
         [HttpGet]
         public async Task<IActionResult> GetContent()
         {
-            var contents=await service.GetContents();
+            var contents = await service.GetContents();
             return Ok(contents);
         }
+        [Route("[controller]/getEvent")]
+        [HttpGet]
+        public async Task<IActionResult> GetEvent()
+        {
+            try
+            {
+                var events = await service.GetEvents();
+                return Ok(events);
+            }
+            catch (Exception ex) { return BadRequest(ex.Message); }
+
+        }
+
     }
 }

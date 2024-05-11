@@ -22,5 +22,14 @@ namespace DataBase.AccessLayer
                 return data.ToList();
             }
         }
+        public async Task<IEnumerable<EventDTO>> getEvents()
+        {
+            var query = "SELECT * FROM dbo.Event";
+            using(var conn = context.CreateConnection())
+            {
+                var data=await conn.QueryAsync<EventDTO>(query);
+                return data.ToList();
+            }
+        }
     }
 }

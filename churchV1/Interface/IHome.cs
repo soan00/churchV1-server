@@ -6,5 +6,6 @@ namespace churchV1.Interface
     {
         Task<IEnumerable<NavbarModel>> GetAllNevbar();
         Task<IEnumerable<ContentModel>> GetContents();
+        Task<IEnumerable<EventModel>> GetEvents();
     }
 }

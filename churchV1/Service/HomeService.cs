@@ -32,5 +32,12 @@ namespace churchV1.Service
             var map= mapper.Map<IEnumerable<ContentModel>>(data);
             return map.Where(x=>x.Active==true);
         }
+
+        public async Task<IEnumerable<EventModel>> GetEvents()
+        {
+            var events= await homeRepo.getEvents();
+            var map=mapper.Map<IEnumerable<EventModel>>(events);
+            return map.Where(x => x.Active == true);
+        }
     }
 }
