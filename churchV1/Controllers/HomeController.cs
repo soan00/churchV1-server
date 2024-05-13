@@ -54,7 +54,7 @@ namespace churchV1.Controllers
             {
                 var result=await service.postPrayerRequest(model);
                 if (result == true)
-                    return Ok("Your Prayer Request Submitted");
+                    return Ok(new { message="Your Prayer Request Submitted" });
                 else
                     return BadRequest("Something went wrong, Please try again");
             }
