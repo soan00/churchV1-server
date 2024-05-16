@@ -5,7 +5,7 @@ namespace churchV1.Interface
     public interface IHome
     {
         Task<IEnumerable<NavbarModel>> GetAllNevbar();
-        Task<IEnumerable<ContentModel>> GetContents();
+        Task<Dictionary<string, object>> GetContents(int pageNumber, int pageSize);
         Task<IEnumerable<EventModel>> GetEvents();
         Task<bool> postPrayerRequest(PrayerModel prayer);
     }

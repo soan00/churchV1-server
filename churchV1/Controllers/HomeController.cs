@@ -29,9 +29,9 @@ namespace churchV1.Controllers
         }
         [Route("[controller]/getContent")]
         [HttpGet]
-        public async Task<IActionResult> GetContent()
+        public async Task<IActionResult> GetContent(int pageNumber,int pageSize)
         {
-            var contents = await service.GetContents();
+            var contents = await service.GetContents(pageNumber,pageSize);
             return Ok(contents);
         }
         [Route("[controller]/getEvent")]

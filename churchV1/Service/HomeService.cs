@@ -27,11 +27,10 @@ namespace churchV1.Service
 
         }
 
-        public async Task<IEnumerable<ContentModel>> GetContents()
+        public async Task<Dictionary<string,object>> GetContents(int pageNumber,int pageSize)
         {
-            var data = await homeRepo.getContents();
-            var map= mapper.Map<IEnumerable<ContentModel>>(data);
-            return map.Where(x=>x.Active==true);
+            var data = await homeRepo.getContents(pageNumber,pageSize);
+            return data;
         }
 
         public async Task<IEnumerable<EventModel>> GetEvents()
